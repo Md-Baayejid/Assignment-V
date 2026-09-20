@@ -14,11 +14,12 @@ const AddedCard = ({ selectCard, setSelectCard }: CardProps) => {
     const handleDelet = (card: Technology) => {
         const restCard = selectCard.filter((c) => c.name !== card.name);
         setSelectCard(restCard);
-        toast.error(`Remove ${card.name}`)
+        toast.error(`Removed ${card.name}`)
     }
 
     const handleRemoveAll = () => {
         setSelectCard([]);
+        toast.error(`Removed All`)
     };
 
     if (selectCard.length === 0) {
