@@ -1,7 +1,8 @@
 
-import { use } from 'react';
+import { use, useState } from 'react';
 import type { Technology } from './../Types/technology'
 import TechnologyCard from './TechnologyCard';
+import AddedCard from './AddedCard';
 
 interface TechnologiesProps {
     technologiesPromise: Promise<Technology[]>
@@ -11,7 +12,7 @@ const Technologies = ({technologiesPromise}: TechnologiesProps) => {
 
     const technologies = use(technologiesPromise); 
 
-    console.log(technologies);
+    const [selectCard, setSelectCard] = useState<Technology[]>([]);
 
     return (
         <div className='container mx-auto px-6 md:px-16'>
@@ -26,15 +27,13 @@ const Technologies = ({technologiesPromise}: TechnologiesProps) => {
 
                 {technologies.map((technology) => {
                     return (
-                        <TechnologyCard key={technology.id} technology={technology} />
+                        <TechnologyCard selectCard={selectCard} setSelectCard={setSelectCard} key={technology.id} technology={technology} />
                     );
                 })}
 
             </div>
             <div>
-                <div className='border border-gray-300 rounded-lg p-4 mt-4'>
-                            <h3 className='text-2xl font-semibold'>Add New Technology</h3>
-                        </div>
+                <AddedCard selectCard={selectCard} setSelectCard={setSelectCard} />
             </div>
         </div>
 

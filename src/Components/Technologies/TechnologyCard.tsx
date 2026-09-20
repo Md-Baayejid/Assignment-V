@@ -2,12 +2,21 @@ import type { Technology } from "../Types/technology";
 
 interface TechnologyCardProps {
     technology: Technology;
+    selectCard: Technology[];
+    setSelectCard: React.Dispatch<React.SetStateAction<Technology[]>>;
 }
 
 
-const TechnologyCard = ({ technology }: TechnologyCardProps) => {
+const TechnologyCard = ({ technology, selectCard, setSelectCard }: TechnologyCardProps) => {
+
+    const handleAddToStack = () => {
+        setSelectCard([...selectCard, technology]);
+    }
+
+    
+
     return (
-        <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm flex flex-col justify-between max-w-sm w-full hover:shadow-md transition-all">
+        <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm flex flex-col justify-between max-w-sm w-full">
             {/* Top Section: Icon & Badge */}
             <div>
                 <div className="flex justify-between items-center mb-5">
@@ -48,7 +57,9 @@ const TechnologyCard = ({ technology }: TechnologyCardProps) => {
                 </div>
 
                 {/* Add to Stack Button */}
-                <button className="w-full bg-[#121622] hover:bg-slate-800 text-white font-medium py-2.5 rounded-xl text-sm transition-all cursor-pointer">
+                <button className="w-full bg-[#121622] hover:bg-slate-800 text-white font-medium py-2.5 rounded-xl text-sm transition-all cursor-pointer"
+                    onClick={() => handleAddToStack()}
+                >
                     Add to Stack
                 </button>
             </div>
