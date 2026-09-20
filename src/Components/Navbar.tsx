@@ -3,7 +3,7 @@ import Logo from '../assets/logo-text.png'
 const Navbar = () => {
     return (
         
-           <div className='bg-white   '>
+           <div className='bg-white sticky top-0 z-50  '>
              <div className="navbar px-6 md:px-16 w-full container mx-auto  ">
                
                 <div className="navbar-start">
