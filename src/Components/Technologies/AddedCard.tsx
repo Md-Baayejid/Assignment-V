@@ -1,6 +1,7 @@
 import type { Technology } from "../Types/technology";
 
 
+
 interface CardProps {
     
     selectCard: Technology[];
@@ -28,14 +29,14 @@ const AddedCard = ({ selectCard, setSelectCard }: CardProps) => {
 
     return (
         <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm w-full max-w-sm flex flex-col justify-between">
-            {/* Top Header Section */}
+            
             <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-1">Your Stack</h3>
                 <p className="text-slate-400 text-xs mb-6">
                     {selectCard.length}  Technologies Selected
                 </p>
 
-                {/* Dynamic List of Selected Cards / Empty State */}
+                
 
                 <div className="flex flex-col gap-3 mb-6">
                     {selectCard.map((tech) => (
@@ -43,7 +44,7 @@ const AddedCard = ({ selectCard, setSelectCard }: CardProps) => {
                             key={tech.id}
                             className="flex items-center justify-between border border-slate-200 rounded-xl p-3 bg-white shadow-2xs "
                         >
-                            {/* Left Side: Icon & Info */}
+                           
                             <div className="flex items-center gap-3">
                                 <div className="w-9 h-9 flex items-center justify-center bg-slate-50 rounded-lg p-1">
                                     <img src={tech.icon} alt={tech.name} className="w-6 h-6 object-contain" />
@@ -54,7 +55,7 @@ const AddedCard = ({ selectCard, setSelectCard }: CardProps) => {
                                 </div>
                             </div>
 
-                            {/* Right Side: Close / Remove Button */}
+                            
                             <button
                                 className="text-slate-400 hover:text-red-500 p-1.5 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
                                 onClick={() => handleDelet(tech)}
@@ -69,7 +70,7 @@ const AddedCard = ({ selectCard, setSelectCard }: CardProps) => {
 
             </div>
 
-            {/* Bottom Remove All Button */}
+            
             {selectCard.length > 0 && (
                 <button
 
