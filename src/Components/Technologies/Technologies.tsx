@@ -23,7 +23,7 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-10">
 
-                {/* Technology Cards */}
+                
                 <div className="justify-items-center col-span-1 lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
 
                     {technologies.map((technology) => {
@@ -39,8 +39,8 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
 
                 </div>
 
-                {/* Selected Technologies */}
-                <div className="col-span-1">
+                
+                <div className="justify-items-center col-span-1">
                     <AddedCard
                         selectCard={selectCard}
                         setSelectCard={setSelectCard}
