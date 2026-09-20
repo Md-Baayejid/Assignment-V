@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import type { Technology } from "../Types/technology";
 
 
@@ -13,6 +14,7 @@ const AddedCard = ({ selectCard, setSelectCard }: CardProps) => {
     const handleDelet = (card: Technology) => {
         const restCard = selectCard.filter((c) => c.name !== card.name);
         setSelectCard(restCard);
+        toast.error(`Remove ${card.name}`)
     }
 
     const handleRemoveAll = () => {

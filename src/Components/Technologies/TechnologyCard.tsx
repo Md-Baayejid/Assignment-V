@@ -8,9 +8,15 @@ interface TechnologyCardProps {
 }
 
 
+
 const TechnologyCard = ({ technology, selectCard, setSelectCard }: TechnologyCardProps) => {
 
+    const isSelected = selectCard.some(
+        (card) => card.id === technology.id
+    );
+
     const handleAddToStack = () => {
+        if (isSelected) return;
         setSelectCard([...selectCard, technology]);
         toast.success(`Added ${technology.name}`)
     }
@@ -59,10 +65,16 @@ const TechnologyCard = ({ technology, selectCard, setSelectCard }: TechnologyCar
                 </div>
 
                 
-                <button className="w-full bg-[#121622] hover:bg-slate-800 text-white font-medium py-2.5 rounded-xl text-sm transition-all cursor-pointer"
-                    onClick={() => handleAddToStack()}
+                <button
+                    disabled={isSelected}
+                    onClick={()=>handleAddToStack()}
+                    className={`w-full font-medium py-2.5 rounded-xl text-sm transition-all ${
+                        isSelected
+                            ? "bg-red-500 text-white cursor-not-allowed"
+                            : "bg-[#121622] hover:bg-slate-800 text-white cursor-pointer"
+                    }`}
                 >
-                    Add to Stack
+                    {isSelected ? "Added" : "Add to Stack"}
                 </button>
             </div>
         </div>
