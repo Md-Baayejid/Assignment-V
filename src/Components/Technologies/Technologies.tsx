@@ -8,9 +8,9 @@ interface TechnologiesProps {
     technologiesPromise: Promise<Technology[]>
 }
 
-const Technologies = ({technologiesPromise}: TechnologiesProps) => {
+const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
 
-    const technologies = use(technologiesPromise); 
+    const technologies = use(technologiesPromise);
 
     const [selectCard, setSelectCard] = useState<Technology[]>([]);
 
@@ -21,21 +21,33 @@ const Technologies = ({technologiesPromise}: TechnologiesProps) => {
                 <h2 className='text-xl text-gray-600 mt-3'>Pick one technology per category to build your ideal stack.</h2>
             </div>
 
-        <div className='grid grid-cols-4 gap-4 mt-10 '>
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-10">
 
-            <div className='col-span-3 grid grid-cols-3 gap-4'>
+                {/* Technology Cards */}
+                <div className="justify-items-center col-span-1 lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
 
-                {technologies.map((technology) => {
-                    return (
-                        <TechnologyCard selectCard={selectCard} setSelectCard={setSelectCard} key={technology.id} technology={technology} />
-                    );
-                })}
+                    {technologies.map((technology) => {
+                        return (
+                            <TechnologyCard
+                                selectCard={selectCard}
+                                setSelectCard={setSelectCard}
+                                key={technology.id}
+                                technology={technology}
+                            />
+                        );
+                    })}
+
+                </div>
+
+                {/* Selected Technologies */}
+                <div className="col-span-1">
+                    <AddedCard
+                        selectCard={selectCard}
+                        setSelectCard={setSelectCard}
+                    />
+                </div>
 
             </div>
-            <div>
-                <AddedCard selectCard={selectCard} setSelectCard={setSelectCard} />
-            </div>
-        </div>
 
         </div>
     );
